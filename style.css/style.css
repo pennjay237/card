@@ -1,0 +1,144 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: monospace;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 32px;
+	min-height: 100vh;
+	background-color: #ffffff;
+	padding: 20px;
+}
+
+.container {
+	text-align: center;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
+	color: white;
+	background-color: #c7c1c4;
+	padding: 40px 20px;
+	border-radius: 12px;
+	width: 100%;
+	max-width: 500px;
+}
+
+h1 {
+	font-size: 2.5rem;
+	color: rgb(49, 18, 18);
+	text-align: center;
+}
+
+.reset:focus {
+	background: #1a1a1d;
+}
+
+.game {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 10px;
+	width: 100%;
+	max-width: 430px;
+	aspect-ratio: 1 / 1; /* maintains square grid */
+}
+
+.item {
+	position: relative;
+	width: 100%;
+	aspect-ratio: 1 / 1; /* makes each box square */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transform: rotateY(0deg);
+	font-size: 2em;
+	background: rgb(247, 247, 247);
+	transition: 0.25s;
+	border-radius: 10px;
+}
+
+.item.boxopen {
+	transform: rotateY(0deg);
+}
+
+.item::after {
+	width: 100%;
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: #000000;
+	transition: 0.25s;
+	transform: rotateY(0deg);
+	backface-visibility: hidden;
+	box-shadow: 10px 5px 5px rgb(255, 255, 255);
+	border-radius: 10px;
+}
+
+.boxopen::after,
+.boxmatch::after {
+	transform: rotateY(180deg);
+}
+
+p {
+	text-align: center;
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: #1a1a1d;
+}
+
+.doing button {
+	width: 150px;
+	height: 50px;
+	font-size: 1.2rem;
+	border-radius: 12px;
+	color: white;
+	background-color: #1a1a1d;
+	text-align: center;
+	border: none;
+	cursor: pointer;
+}
+
+.num {
+	justify-content: center;
+	color: white;
+	align-items: center;
+	text-align: center;
+}
+
+.timeDisplay {
+	color: white;
+	font-size: 1.5rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
+	.container {
+		padding: 20px 10px;
+	}
+
+	.game {
+		max-width: 100%;
+		gap: 8px;
+	}
+
+	.item {
+		font-size: 1.5em;
+	}
+
+	h1 {
+		font-size: 2rem;
+	}
+
+	.doing button {
+		width: 120px;
+		height: 45px;
+		font-size: 1rem;
+	}
+}
